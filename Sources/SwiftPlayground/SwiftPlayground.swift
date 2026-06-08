@@ -4,6 +4,6 @@
 @main
 struct SwiftPlayground {
     static func main() {
-        // This is a testing comment
+        
     }
 }
