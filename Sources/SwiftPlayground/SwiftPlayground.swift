@@ -32,14 +32,19 @@ struct SwiftPlayground {
                     print("\(index + 1). \(birdName)")
                 }
                 print("Enter a number: ")
-                let numberSelected: Int = Int(readLine()!)!
-
+                // Checking if the user enters a valid input (a number).
+                if let userInput = readLine(),
+                let numberSelected = Int(userInput){
+                // Checking if the user input a number from 1 - 8
+                // If the input number is from 1 - 8, continue the program
+                if numberSelected > 0 && numberSelected <= birdList.count{
                 // Get the bird'name from the list based on the number Maia selected
                 let birdMaiaSaw = birdList[numberSelected - 1]
 
                 // Check if the specie list contains the bird Maia just saw
                 if speciesMaiaSeen.contains(birdMaiaSaw){
-                    // If the specie list contains the bird Maia just saw, increase the total seen time by 1
+                    // If the specie list contains the bird Maia just saw, 
+                    // increase the total seen time by 1
                     let index = speciesMaiaSeen.firstIndex(of: birdMaiaSaw)!
                     numberOfSpecies[index] = numberOfSpecies[index] + 1
                     
@@ -52,6 +57,18 @@ struct SwiftPlayground {
 
                 // Tell Maia the bird is added
                 print("Added a \(birdMaiaSaw)")
+                }
+                // If the user input a number out of the range 1 - 8
+                // tell the user that they need to enter 1-8 as an error message.
+                else{
+                    print("Out of range input, please select a number from 1 to 8")
+                }
+                }
+                // If the user enter something which is not a number,
+                // prints out an error message that tells the user to enter a number.
+                else{
+                    print("Invalid input, please enter a number.")
+                }
 
             }else if birdOrInsect?.lowercased() == "insect"{
 
@@ -62,6 +79,9 @@ struct SwiftPlayground {
                 }
                 print("Enter a number: ")
                 let numberSelected: Int = Int(readLine()!)!
+                // Checking if the user input a number from 1 - 8
+                // If the input number is from 1 - 8, continue the program
+                if numberSelected > 0 && numberSelected <= insectList.count{
                 // Get the insect'name from the list based on the number Maia selected
                 let insectMaiaSaw = insectList[numberSelected - 1]
 
@@ -82,6 +102,12 @@ struct SwiftPlayground {
                 print("Added a \(insectMaiaSaw)")
 
             }
+            // If the user input a number out of the range 1 - 8
+            // tell the user that they need to enter 1-8 as an error message.
+            else{
+                print("Out of range input, please select a number from 1 to 8")
+            }
+            }
             // Ask Maia if she wants to add another specie, "y" for continue and "n" for stop
             print("Do you want to add another (Y/N): ")
             let userDecision = readLine()
@@ -100,7 +126,7 @@ struct SwiftPlayground {
         totalSpecies.forEach{ specie in
         print("\(specie.1) \(specie.0)")
         }
-        print("Good bye")
+        print("Good bye.")
     }
 }
 
