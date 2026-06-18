@@ -36,11 +36,19 @@ struct SwiftPlayground {
                 print("Enter a number: ")
                 let userInput : String = readLine()!
                 let indexUserChose : Int = Int(userInput)!
-                let foodName = foodMenu[indexUserChose - 1]
-                let foodCost = foodCost[indexUserChose - 1]
-                // Tell the students that the food is added and add the cost to the total cost
-                print("You ordered \(foodName), it costs $\(foodCost)")
-                totalCost = totalCost + foodCost
+                // Have a range test which checks if the user input is within range of 1-6.
+                // If not, it prints out the error message
+                if indexUserChose > 0 && indexUserChose <= foodMenu.count{
+                    let foodName = foodMenu[indexUserChose - 1]
+                    let foodCost = foodCost[indexUserChose - 1]
+                    // Tell the students that the food is added and add the cost to the total cost
+                    print("You ordered \(foodName), it costs $\(foodCost)")
+                    totalCost = totalCost + foodCost
+                }
+                else{
+                    print("The number is out of range, please enter a number within 1 - 6!")
+                    
+                }
             }
             else if foodOrDrink == "drink"{
                 // Asks them to select the drink they want from the menu (slide 10)
